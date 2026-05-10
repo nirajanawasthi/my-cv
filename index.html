@@ -1,200 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nirajan Awasthi - Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Nirajan Awasthi — Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-            --accent: #3b82f6;
+        :root{
+            --bg:#0f1724;
+            --card:#0b1220;
+            --muted:#94a3b8;
+            --accent1:#06b6d4;
+            --accent2:#7c3aed;
+            --glass: rgba(255,255,255,0.04);
+            --glass-2: rgba(255,255,255,0.02);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        *{box-sizing:border-box;margin:0;padding:0}
+        html,body{height:100%}
+        body{font-family:'Inter',system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#041024);color:#e6eef8;line-height:1.5}
+
+        .page{max-width:1100px;margin:28px auto;padding:28px}
+
+        header{
+            display:flex;gap:20px;align-items:center;justify-content:space-between;margin-bottom:22px
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--light);
-            padding: 40px 20px;
-        }
+        .brand{display:flex;gap:16px;align-items:center}
+        .avatar{width:84px;height:84px;border-radius:14px;overflow:hidden;flex:0 0 84px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        h1{font-size:1.6rem;letter-spacing:-0.6px}
+        p.lead{color:var(--muted);margin-top:6px;font-size:0.95rem}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border-radius: 8px;
-        }
+        .controls{display:flex;gap:12px;align-items:center}
+        .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#041024;font-weight:600;border:none;cursor:pointer}
+        .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
 
-        header {
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
+        nav{display:flex;gap:14px;align-items:center}
+        nav a{color:var(--muted);text-decoration:none;font-size:0.95rem}
 
-        h1 {
-            color: var(--dark);
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-        }
+        .hero{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-bottom:22px}
+        .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.9rem;
-            color: var(--primary);
-        }
+        .about{padding:8px}
+        .stats{display:flex;gap:12px;margin-top:12px}
+        .stat{background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;text-align:center;flex:1}
+        .stat strong{display:block;font-size:1.1rem;color:#fff}
 
-        .contact-info span {
-            display: flex;
-            align-items: center;
-        }
+        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+        .feature{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
 
-        section {
-            margin-bottom: 30px;
-        }
+        .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+        .gallery img{width:100%;height:110px;object-fit:cover;border-radius:8px;cursor:pointer}
 
-        h2 {
-            font-size: 1.2rem;
-            color: var(--dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-left: 4px solid var(--primary);
-            padding-left: 15px;
-            margin-bottom: 15px;
-        }
+        .sections{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+        .skills .skill{margin-bottom:10px}
+        .skill .label{display:flex;justify-content:space-between;margin-bottom:6px;color:var(--muted);font-size:0.9rem}
+        .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+        .bar-inner{height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:50%}
 
-        .card {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 6px;
-        }
+        form input,form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+        form label{display:block;margin-bottom:6px;color:var(--muted);font-size:0.9rem}
+        form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
 
-        .date {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-style: italic;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        ul {
-            list-style-position: inside;
-            padding-left: 5px;
-        }
-
-        li {
-            margin-bottom: 5px;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            list-style: none;
-        }
-
-        .skills-list li {
-            background: var(--dark);
-            color: #fff;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-            .container { padding: 20px; }
-            h1 { font-size: 1.8rem; }
+        @media (max-width:960px){
+            .hero{grid-template-columns:1fr}
+            .gallery{grid-template-columns:repeat(2,1fr)}
+            .sections{grid-template-columns:1fr}
+            .features{grid-template-columns:repeat(2,1fr)}
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <h1>Nirajan Awasthi</h1>
-        <div class="contact-info">
-            <span>📍 Lalitpur, Nepal</span>
-            <span>📞 9762311348</span>
-            <span>✉️ nirajanawasthi936@gmail.com</span>
-        </div>
-    </header>
-
-    <section>
-        <h2>Career Objective</h2>
-        <p>To obtain a Frontend Developer position where I can utilize my skills in JavaScript, HTML/CSS, and basic Python to build responsive and user-friendly web applications.</p>
-    </section>
-
-    <section>
-        <h2>Technical Skills</h2>
-        <ul class="skills-list">
-            <li>JavaScript (ES6+)</li>
-            <li>HTML5 & CSS3</li>
-            <li>React</li>
-            <li>Bootstrap</li>
-            <li>Python</li>
-            <li>MySQL</li>
-            <li>Git & GitHub</li>
-            <li>UI/UX Principles</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Education</h2>
-        <div class="card">
-            <h3>BSc. CSIT</h3>
-            <span class="date">Patan Multiple Campus | 6th Semester</span>
-            <p>Focusing on Computer Science and Information Technology.</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Personal Portfolio</h3>
-                <span class="date">JavaScript</span>
-                <p>Built a responsive website featuring a dynamic project showcase and contact form.</p>
+    <div class="page">
+        <header>
+            <div class="brand">
+                <div class="avatar card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b0b37b8a5d0d1a6a2f3b3a8a8f7c2e6" alt="avatar"></div>
+                <div>
+                    <h1>Nirajan Awasthi</h1>
+                    <p class="lead">Frontend Developer • BSc. CSIT student • Lalitpur, Nepal</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Student Record System</h3>
-                <span class="date">Python + MySQL</span>
-                <p>Developed a CLI-based CRUD system to manage student data efficiently.</p>
+            <div class="controls">
+                <a class="ghost" href="mailto:nirajanawasthi936@gmail.com">Contact</a>
+                <a class="btn" href="https://example.com/resume.pdf" target="_blank" rel="noopener">Download CV</a>
             </div>
+        </header>
+
+        <div class="hero">
+            <div>
+                <div class="card about">
+                    <h2 style="margin-bottom:8px">Career Objective</h2>
+                    <p style="color:var(--muted)">I build responsive, accessible, and beautiful web interfaces using modern HTML, CSS and JavaScript. I enjoy turning ideas into polished user experiences.</p>
+
+                    <div class="stats" style="margin-top:14px">
+                        <div class="stat"><strong>5+</strong><small style="color:var(--muted)">Projects</small></div>
+                        <div class="stat"><strong>3</strong><small style="color:var(--muted)">Years learning</small></div>
+                        <div class="stat"><strong>100%</strong><small style="color:var(--muted)">Enthusiasm</small></div>
+                    </div>
+                </div>
+
+                <div class="card features" style="margin-top:14px">
+                    <div class="feature">
+                        <strong>Interactive UI</strong>
+                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Animations, accessible controls</div>
+                    </div>
+                    <div class="feature">
+                        <strong>Responsive</strong>
+                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Mobile-first layouts</div>
+                    </div>
+                    <div class="feature">
+                        <strong>Clean Code</strong>
+                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Readable & maintainable</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:16px">
+                    <h2 style="margin-bottom:8px">Projects</h2>
+                    <ul style="color:var(--muted);line-height:1.6">
+                        <li><strong>Personal Portfolio</strong> — Responsive site with gallery and contact form.</li>
+                        <li><strong>Student Records System</strong> — CLI + DB for managing student data.</li>
+                        <li><strong>Mini E‑commerce</strong> — Frontend prototype with cart interactions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside>
+                <div class="card">
+                    <h3 style="margin-bottom:8px">Contact</h3>
+                    <p style="color:var(--muted)"><strong>Location:</strong> Lalitpur, Nepal<br><strong>Phone:</strong> 9762311348<br><strong>Email:</strong> nirajanawasthi936@gmail.com</p>
+                </div>
+
+                <div class="card" style="margin-top:12px">
+                    <h3 style="margin-bottom:8px">Gallery</h3>
+                    <div class="gallery">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="img1" onclick="openLightbox(this.src)">
+                        <img src="https://images.unsplash.com/photo-1509228627159-645c2f7f5d1b?q=80&w=800&auto=format&fit=crop" alt="img2" onclick="openLightbox(this.src)">
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop" alt="img3" onclick="openLightbox(this.src)">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="img4" onclick="openLightbox(this.src)">
+                    </div>
+                </div>
+            </aside>
         </div>
-    </section>
 
-    <section>
-        <h2>Languages</h2>
-        <p><strong>Nepali:</strong> Fluent | <strong>English:</strong> Intermediate | <strong>Hindi:</strong> Intermediate</p>
-    </section>
-</div>
+        <div class="sections">
+            <div>
+                <div class="card skills">
+                    <h2 style="margin-bottom:8px">Technical Skills</h2>
+                    <div class="skill"><div class="label"><span>HTML & CSS</span><span>90%</span></div><div class="bar"><div class="bar-inner" style="width:90%"></div></div></div>
+                    <div class="skill"><div class="label"><span>JavaScript</span><span>75%</span></div><div class="bar"><div class="bar-inner" style="width:75%"></div></div></div>
+                    <div class="skill"><div class="label"><span>React</span><span>60%</span></div><div class="bar"><div class="bar-inner" style="width:60%"></div></div></div>
+                    <div class="skill"><div class="label"><span>Python</span><span>55%</span></div><div class="bar"><div class="bar-inner" style="width:55%"></div></div></div>
+                </div>
 
+                <div class="card" style="margin-top:12px">
+                    <h2 style="margin-bottom:8px">Education</h2>
+                    <p style="color:var(--muted)"><strong>BSc. CSIT</strong> — Patan Multiple Campus (6th Semester)</p>
+                </div>
+            </div>
+
+            <aside>
+                <div class="card">
+                    <h2 style="margin-bottom:8px">Get in touch</h2>
+                    <form id="contactForm">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" placeholder="Your name" required>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Say hi..."></textarea>
+                        <div style="margin-top:10px;display:flex;gap:8px">
+                            <button class="btn" type="submit">Send</button>
+                            <button type="button" class="ghost" onclick="copyEmail()">Copy Email</button>
+                        </div>
+                    </form>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            © 2026 Nirajan Awasthi — Built with ❤️ • <a href="https://github.com/NirajAwasthi1/my-cv" style="color:var(--muted);text-decoration:underline" target="_blank" rel="noopener">Source</a>
+        </footer>
+
+    </div>
+
+    <script>
+        function openLightbox(src){
+            const modal=document.createElement('div');
+            modal.style.position='fixed';modal.style.inset=0;modal.style.background='rgba(0,0,0,0.8)';modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.zIndex=9999
+            const img=document.createElement('img');img.src=src;img.style.maxWidth='90%';img.style.maxHeight='90%';img.style.borderRadius='8px';
+            modal.appendChild(img);
+            modal.addEventListener('click',()=>document.body.removeChild(modal));
+            document.body.appendChild(modal);
+        }
+
+        function copyEmail(){navigator.clipboard.writeText('nirajanawasthi936@gmail.com').then(()=>{alert('Email copied to clipboard')})}
+
+        document.getElementById('contactForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            const name=document.getElementById('name').value;
+            const email=document.getElementById('email').value;
+            const msg=document.getElementById('message').value;
+            const subject=encodeURIComponent('Portfolio contact from '+name);
+            const body=encodeURIComponent(msg+'\n\nFrom: '+name+' ('+email+')');
+            window.location.href='mailto:nirajanawasthi936@gmail.com?subject='+subject+'&body='+body;
+        });
+    </script>
 </body>
 </html>
