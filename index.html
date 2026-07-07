@@ -1,213 +1,348 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Nirajan Awasthi — Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root{
-            --bg:#0f1724;
-            --card:#0b1220;
-            --muted:#94a3b8;
-            --accent1:#06b6d4;
-            --accent2:#7c3aed;
-            --glass: rgba(255,255,255,0.04);
-            --glass-2: rgba(255,255,255,0.02);
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nirajan Awasthi — Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131a2b;
+    --bg-2:#0d1322;
+    --panel:#1a2340;
+    --panel-2:#161d38;
+    --ink:#e9edf7;
+    --muted:#8d9ac0;
+    --line:rgba(255,255,255,0.08);
+    --amber:#f2a93b;
+    --teal:#39d6c0;
+    --status-progress:#f2a93b;
+    --status-built:#39d6c0;
+    --status-archived:#5b6690;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(57,214,192,0.08), transparent 60%),
+      radial-gradient(900px 500px at -5% 10%, rgba(242,169,59,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
 
-        *{box-sizing:border-box;margin:0;padding:0}
-        html,body{height:100%}
-        body{font-family:'Inter',system-ui,Segoe UI,Roboto,Arial;background:linear-gradient(180deg,var(--bg),#041024);color:#e6eef8;line-height:1.5}
+  .eyebrow{
+    font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--teal);
+    display:flex;align-items:center;gap:8px;margin-bottom:10px;
+  }
+  .eyebrow::before{content:"$";color:var(--amber)}
 
-        .page{max-width:1100px;margin:28px auto;padding:28px}
+  /* header / hero */
+  header.hero{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:28px;
+    padding:32px;border-radius:16px;margin-bottom:44px;
+    background:
+      radial-gradient(600px 300px at 100% 0%, rgba(57,214,192,0.14), transparent 60%),
+      radial-gradient(500px 260px at 0% 100%, rgba(242,169,59,0.10), transparent 60%),
+      linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  header.hero h1{
+    font-weight:700; position:relative; display:inline-block; padding-bottom:10px;
+  }
+  header.hero h1 .first{
+    background:linear-gradient(90deg, var(--ink), var(--teal));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  header.hero h1 .last{color:var(--amber)}
+  header.hero h1::after{
+    content:""; position:absolute; left:0; bottom:0; height:3px; width:56px;
+    background:linear-gradient(90deg, var(--teal), var(--amber)); border-radius:2px;
+  }
+  header.hero .role{
+    display:inline-flex;color:var(--amber);background:rgba(242,169,59,0.1);
+    border:1px solid rgba(242,169,59,0.3);padding:5px 12px;border-radius:999px;
+    font-size:0.82rem;margin-top:10px;
+  }
+  .kw{color:var(--teal);font-weight:600}
+  .terminal{
+    background:var(--panel-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;font-size:0.88rem;color:var(--muted);
+  }
+  .terminal .prompt{color:var(--teal)}
+  .terminal .out{color:var(--ink)}
+  .typed{
+    display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--amber);
+    animation: type 1.6s steps(28,end) 1, blink 0.8s step-end infinite 1.6s;
+    max-width:0; animation-fill-mode:forwards;
+  }
+  @keyframes type{ from{max-width:0} to{max-width:32ch} }
+  @keyframes blink{ 50%{border-color:transparent} }
 
-        header{
-            display:flex;gap:20px;align-items:center;justify-content:space-between;margin-bottom:22px
-        }
+  h1{font-size:2rem;margin:14px 0 6px}
+  .role{color:var(--muted);font-size:0.95rem}
+  .lede{color:var(--muted);margin-top:16px;font-size:0.92rem;max-width:52ch}
 
-        .brand{display:flex;gap:16px;align-items:center}
-        .avatar{width:84px;height:84px;border-radius:14px;overflow:hidden;flex:0 0 84px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-        .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-        h1{font-size:1.6rem;letter-spacing:-0.6px}
-        p.lead{color:var(--muted);margin-top:6px;font-size:0.95rem}
+  .actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .btn{
+    background:var(--amber);color:#141a2b;font-weight:600;border:none;
+    padding:10px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.85rem;
+    text-decoration:none;display:inline-block;
+  }
+  .ghost{
+    background:transparent;border:1px solid var(--line);color:var(--ink);
+    padding:10px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:0.85rem;
+    text-decoration:none;display:inline-block;
+  }
 
-        .controls{display:flex;gap:12px;align-items:center}
-        .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#041024;font-weight:600;border:none;cursor:pointer}
-        .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
 
-        nav{display:flex;gap:14px;align-items:center}
-        nav a{color:var(--muted);text-decoration:none;font-size:0.95rem}
+  /* status board (signature element) */
+  .status-board .row{
+    display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:0.85rem;
+  }
+  .status-board .row:last-child{border-bottom:none}
+  .dot{width:8px;height:8px;border-radius:50%;flex:0 0 8px}
+  .dot.progress{background:var(--status-progress);box-shadow:0 0 0 3px rgba(242,169,59,0.15)}
+  .dot.built{background:var(--status-built);box-shadow:0 0 0 3px rgba(57,214,192,0.15)}
+  .label-text{flex:1;color:var(--ink)}
+  .tag{
+    font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:999px;
+  }
+  .tag.progress{color:var(--status-progress);border:1px solid var(--status-progress)}
+  .tag.built{color:var(--status-built);border:1px solid var(--status-built)}
 
-        .hero{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-bottom:22px}
-        .card{background:linear-gradient(180deg,var(--glass),var(--glass-2));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+  section{margin-bottom:44px}
+  section > h2{font-size:1.3rem;margin-bottom:18px}
 
-        .about{padding:8px}
-        .stats{display:flex;gap:12px;margin-top:12px}
-        .stat{background:rgba(255,255,255,0.03);padding:10px;border-radius:10px;text-align:center;flex:1}
-        .stat strong{display:block;font-size:1.1rem;color:#fff}
+  /* projects */
+  .projects{display:grid;gap:14px}
+  .project{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;
+  }
+  .project h3{font-size:1.05rem;margin-bottom:6px}
+  .project p{color:var(--muted);font-size:0.85rem;margin-bottom:10px;max-width:62ch}
+  .stack{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    font-size:0.7rem;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
+    padding:3px 8px;border-radius:6px;
+  }
+  .status{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:999px;white-space:nowrap;height:fit-content}
+  .status.progress{color:var(--status-progress);border:1px solid var(--status-progress)}
+  .status.built{color:var(--status-built);border:1px solid var(--status-built)}
+  .status.archived{color:var(--status-archived);border:1px solid var(--status-archived)}
 
-        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
-        .feature{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+  /* skills as chips, not fake percentages */
+  .skillgrid{display:flex;flex-wrap:wrap;gap:8px}
+  .skillgrid .chip{font-size:0.78rem;padding:7px 12px;border-radius:8px;background:var(--panel-2);color:var(--ink);border:1px solid var(--line)}
 
-        .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
-        .gallery img{width:100%;height:110px;object-fit:cover;border-radius:8px;cursor:pointer}
+  .two-col{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
 
-        .sections{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}
+  /* contact */
+  form label{display:block;font-size:0.78rem;color:var(--muted);margin-bottom:6px}
+  form input,form textarea{
+    width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);
+    background:var(--panel-2);color:var(--ink);font-family:inherit;font-size:0.85rem;margin-bottom:14px;
+  }
+  form input:focus,form textarea:focus{outline:2px solid var(--teal);outline-offset:1px}
+  .meta {
+    color:var(--muted);
+    font-size:0.88rem;
+    line-height:1.8;
+  }
+  .meta strong,
+  .contact-info strong {
+    color:var(--ink);
+  }
+  .button-row {
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .contact-info {
+    color:var(--muted);
+    font-size:0.88rem;
+    line-height:2;
+  }
 
-        .skills .skill{margin-bottom:10px}
-        .skill .label{display:flex;justify-content:space-between;margin-bottom:6px;color:var(--muted);font-size:0.9rem}
-        .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
-        .bar-inner{height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:50%}
+  footer{
+    border-top:1px solid var(--line);padding-top:20px;color:var(--muted);
+    font-size:0.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+  footer a{color:var(--teal);text-decoration:none}
 
-        form input,form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-        form label{display:block;margin-bottom:6px;color:var(--muted);font-size:0.9rem}
-        form .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
-
-        @media (max-width:960px){
-            .hero{grid-template-columns:1fr}
-            .gallery{grid-template-columns:repeat(2,1fr)}
-            .sections{grid-template-columns:1fr}
-            .features{grid-template-columns:repeat(2,1fr)}
-        }
-    </style>
+  @media (max-width:860px){
+    header.hero{grid-template-columns:1fr}
+    .two-col{grid-template-columns:1fr}
+    .project{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .typed{animation:none;border-right:none;max-width:none}
+  }
+</style>
 </head>
 <body>
-    <div class="page">
-        <header>
-            <div class="brand">
-                <div class="avatar card"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=8b0b37b8a5d0d1a6a2f3b3a8a8f7c2e6" alt="avatar"></div>
-                <div>
-                    <h1>Nirajan Awasthi</h1>
-                    <p class="lead">Frontend Developer • BSc. CSIT student • Lalitpur, Nepal</p>
-                </div>
-            </div>
-            <div class="controls">
-                <a class="ghost" href="mailto:nirajanawasthi936@gmail.com">Contact</a>
-                <a class="btn" href="https://example.com/resume.pdf" target="_blank" rel="noopener">Download CV</a>
-            </div>
-        </header>
+<div class="wrap">
 
-        <div class="hero">
-            <div>
-                <div class="card about">
-                    <h2 style="margin-bottom:8px">Career Objective</h2>
-                    <p style="color:var(--muted)">I build responsive, accessible, and beautiful web interfaces using modern HTML, CSS and JavaScript. I enjoy turning ideas into polished user experiences.</p>
-
-                    <div class="stats" style="margin-top:14px">
-                        <div class="stat"><strong>5+</strong><small style="color:var(--muted)">Projects</small></div>
-                        <div class="stat"><strong>3</strong><small style="color:var(--muted)">Years learning</small></div>
-                        <div class="stat"><strong>100%</strong><small style="color:var(--muted)">Enthusiasm</small></div>
-                    </div>
-                </div>
-
-                <div class="card features" style="margin-top:14px">
-                    <div class="feature">
-                        <strong>Interactive UI</strong>
-                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Animations, accessible controls</div>
-                    </div>
-                    <div class="feature">
-                        <strong>Responsive</strong>
-                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Mobile-first layouts</div>
-                    </div>
-                    <div class="feature">
-                        <strong>Clean Code</strong>
-                        <div style="color:var(--muted);font-size:0.9rem;margin-top:6px">Readable & maintainable</div>
-                    </div>
-                </div>
-
-                <div class="card" style="margin-top:16px">
-                    <h2 style="margin-bottom:8px">Projects</h2>
-                    <ul style="color:var(--muted);line-height:1.6">
-                        <li><strong>Personal Portfolio</strong> — Responsive site with gallery and contact form.</li>
-                        <li><strong>Student Records System</strong> — CLI + DB for managing student data.</li>
-                        <li><strong>Mini E‑commerce</strong> — Frontend prototype with cart interactions.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <aside>
-                <div class="card">
-                    <h3 style="margin-bottom:8px">Contact</h3>
-                    <p style="color:var(--muted)"><strong>Location:</strong> Lalitpur, Nepal<br><strong>Phone:</strong> 9762311348<br><strong>Email:</strong> nirajanawasthi936@gmail.com</p>
-                </div>
-
-                <div class="card" style="margin-top:12px">
-                    <h3 style="margin-bottom:8px">Gallery</h3>
-                    <div class="gallery">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="img1" onclick="openLightbox(this.src)">
-                        <img src="https://images.unsplash.com/photo-1509228627159-645c2f7f5d1b?q=80&w=800&auto=format&fit=crop" alt="img2" onclick="openLightbox(this.src)">
-                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=800&auto=format&fit=crop" alt="img3" onclick="openLightbox(this.src)">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="img4" onclick="openLightbox(this.src)">
-                    </div>
-                </div>
-            </aside>
-        </div>
-
-        <div class="sections">
-            <div>
-                <div class="card skills">
-                    <h2 style="margin-bottom:8px">Technical Skills</h2>
-                    <div class="skill"><div class="label"><span>HTML & CSS</span><span>90%</span></div><div class="bar"><div class="bar-inner" style="width:90%"></div></div></div>
-                    <div class="skill"><div class="label"><span>JavaScript</span><span>75%</span></div><div class="bar"><div class="bar-inner" style="width:75%"></div></div></div>
-                    <div class="skill"><div class="label"><span>React</span><span>60%</span></div><div class="bar"><div class="bar-inner" style="width:60%"></div></div></div>
-                    <div class="skill"><div class="label"><span>Python</span><span>55%</span></div><div class="bar"><div class="bar-inner" style="width:55%"></div></div></div>
-                </div>
-
-                <div class="card" style="margin-top:12px">
-                    <h2 style="margin-bottom:8px">Education</h2>
-                    <p style="color:var(--muted)"><strong>BSc. CSIT</strong> — Patan Multiple Campus (6th Semester)</p>
-                </div>
-            </div>
-
-            <aside>
-                <div class="card">
-                    <h2 style="margin-bottom:8px">Get in touch</h2>
-                    <form id="contactForm">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" placeholder="Your name" required>
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Say hi..."></textarea>
-                        <div style="margin-top:10px;display:flex;gap:8px">
-                            <button class="btn" type="submit">Send</button>
-                            <button type="button" class="ghost" onclick="copyEmail()">Copy Email</button>
-                        </div>
-                    </form>
-                </div>
-            </aside>
-        </div>
-
-        <footer>
-            © 2026 Nirajan Awasthi — Built with ❤️ • <a href="https://github.com/NirajAwasthi1/my-cv" style="color:var(--muted);text-decoration:underline" target="_blank" rel="noopener">Source</a>
-        </footer>
-
+  <header class="hero">
+    <div>
+      <div class="terminal">
+        <div><span class="prompt">nirajan@dev</span><span class="out">:~$</span> <span class="typed">whoami</span></div>
+      </div>
+      <h1><span class="first">Nirajan</span> <span class="last">Awasthi</span></h1>
+      <p class="role">Full-Stack Developer (Django) · BSc. CSIT, 6th Semester · Lalitpur, Nepal</p>
+      <p class="lede">I build backend-heavy web platforms — booking systems, payment integrations, role-based dashboards — mostly in <span class="kw">Django</span>, and ship them end to end: models, views, templates, and the payment gateway wiring that makes them actually usable in Nepal (<span class="kw">Khalti</span>, <span class="kw">eSewa</span>).</p>
+      <div class="actions">
+        <a class="btn" href="mailto:nirajanawasthi936@gmail.com">Contact me</a>
+        <a class="ghost" href="https://github.com/NirajAwasthi1" target="_blank" rel="noopener">GitHub</a>
+      </div>
     </div>
 
-    <script>
-        function openLightbox(src){
-            const modal=document.createElement('div');
-            modal.style.position='fixed';modal.style.inset=0;modal.style.background='rgba(0,0,0,0.8)';modal.style.display='flex';modal.style.alignItems='center';modal.style.justifyContent='center';modal.style.zIndex=9999
-            const img=document.createElement('img');img.src=src;img.style.maxWidth='90%';img.style.maxHeight='90%';img.style.borderRadius='8px';
-            modal.appendChild(img);
-            modal.addEventListener('click',()=>document.body.removeChild(modal));
-            document.body.appendChild(modal);
-        }
+    <div class="card status-board">
+      <div class="eyebrow">currently building</div>
+      <div class="row"><span class="dot progress"></span><span class="label-text">HostelHub — payment flow & UI polish</span><span class="tag progress">in progress</span></div>
+      <div class="row"><span class="dot progress"></span><span class="label-text">Fixing Quirks Mode render bug (DOCTYPE)</span><span class="tag progress">debugging</span></div>
+      <div class="row"><span class="dot built"></span><span class="label-text">eSewa HMAC-SHA256 signing</span><span class="tag built">confirmed working</span></div>
+    </div>
+  </header>
 
-        function copyEmail(){navigator.clipboard.writeText('nirajanawasthi936@gmail.com').then(()=>{alert('Email copied to clipboard')})}
+  <section>
+    <div class="eyebrow">projects</div>
+    <h2>What I've shipped</h2>
+    <div class="projects">
 
-        document.getElementById('contactForm').addEventListener('submit',function(e){
-            e.preventDefault();
-            const name=document.getElementById('name').value;
-            const email=document.getElementById('email').value;
-            const msg=document.getElementById('message').value;
-            const subject=encodeURIComponent('Portfolio contact from '+name);
-            const body=encodeURIComponent(msg+'\n\nFrom: '+name+' ('+email+')');
-            window.location.href='mailto:nirajanawasthi936@gmail.com?subject='+subject+'&body='+body;
-        });
-    </script>
+      <div class="project">
+        <div>
+          <h3>HostelHub</h3>
+          <p>Multi-role hostel listing &amp; booking platform for Nepal — separate Student, Owner, and Admin flows, a booking/approval workflow, Chart.js dashboards, and eSewa payment integration with HMAC-SHA256 signed requests.</p>
+          <div class="stack">
+            <span class="chip">Django</span><span class="chip">SQLite</span><span class="chip">Bootstrap</span>
+            <span class="chip">Chart.js</span><span class="chip">eSewa</span><span class="chip">python-dotenv</span>
+          </div>
+        </div>
+        <span class="status progress">In progress</span>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Gym Membership System</h3>
+          <p>A Django REST Framework API with Khalti payment gateway integration — a dedicated Payment model and serializers, JWT-authenticated endpoints, background tasks via Celery, and interactive docs through drf-spectacular / Swagger.</p>
+          <div class="stack">
+            <span class="chip">Django REST Framework</span><span class="chip">Khalti</span>
+            <span class="chip">Celery</span><span class="chip">JWT</span><span class="chip">Swagger</span>
+          </div>
+        </div>
+        <span class="status built">Built</span>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Buy Me a Coffee (clone)</h3>
+          <p>A Django donation-page clone set up and extended locally, with Khalti sandbox payment integration tested end to end using sandbox credentials.</p>
+          <div class="stack">
+            <span class="chip">Django</span><span class="chip">Khalti Sandbox</span><span class="chip">uv</span>
+          </div>
+        </div>
+        <span class="status built">Complete</span>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Hostel Management System (v1)</h3>
+          <p>An earlier hostel platform with a full data model — hostels, rooms, bookings, payments, complaints, notices — role-aware views, a custom CSS design system, and a seed_data management command. Rebuilt from scratch as HostelHub after a drive format wiped the original.</p>
+          <div class="stack">
+            <span class="chip">Django</span><span class="chip">Custom CSS</span><span class="chip">Management commands</span>
+          </div>
+        </div>
+        <span class="status archived">Archived</span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section>
+      <div class="eyebrow">stack</div>
+      <h2>Tools I work with</h2>
+      <div class="card">
+        <div class="skillgrid">
+          <span class="chip">Python</span><span class="chip">Django</span><span class="chip">Django REST Framework</span>
+          <span class="chip">SQLite</span><span class="chip">Celery</span><span class="chip">JWT Auth</span>
+          <span class="chip">Bootstrap</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span>
+          <span class="chip">Khalti / eSewa integration</span><span class="chip">Git &amp; GitHub</span>
+          <span class="chip">VS Code + PowerShell workflow</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="eyebrow">education</div>
+      <h2>Background</h2>
+      <div class="card">
+        <p class="meta">
+          <strong>BSc. CSIT</strong><br>
+          Patan Multiple Campus, Tribhuvan University<br>
+          6th Semester
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <div class="eyebrow">contact</div>
+    <h2>Get in touch</h2>
+    <div class="two-col">
+      <div class="card">
+        <form id="contactForm">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Say hi..."></textarea>
+          <div class="button-row">
+            <button class="btn" type="submit">Send</button>
+            <button type="button" class="ghost" onclick="copyEmail()">Copy email</button>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <p class="contact-info">
+          <strong>Location</strong><br>Lalitpur, Nepal<br><br>
+          <strong>Phone</strong><br>9762311348<br><br>
+          <strong>Email</strong><br>nirajanawasthi936@gmail.com
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Nirajan Awasthi</span>
+    <a href="https://github.com/NirajAwasthi1/my-cv" target="_blank" rel="noopener">Source on GitHub</a>
+  </footer>
+
+</div>
+
+<script>
+function copyEmail(){
+  navigator.clipboard.writeText('nirajanawasthi936@gmail.com').then(()=>alert('Email copied to clipboard'));
+}
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const msg = document.getElementById('message').value;
+  const subject = encodeURIComponent('Portfolio contact from ' + name);
+  const body = encodeURIComponent(msg + '\n\nFrom: ' + name + ' (' + email + ')');
+  window.location.href = 'mailto:nirajanawasthi936@gmail.com?subject=' + subject + '&body=' + body;
+});
+</script>
 </body>
 </html>
